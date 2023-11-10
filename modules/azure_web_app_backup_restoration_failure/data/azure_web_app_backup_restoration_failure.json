@@ -3,19 +3,19 @@
   "description": "This incident type occurs when a backup restoration attempt of an Azure webapp fails. Possible causes for this failure could be related to error messages or log entries, inaccessible or corrupted backup files, misconfigured database settings, or incorrect web app configuration. The failure to restore a backup can result in data loss or service disruption.",
   "params": [
     {
-      "name": "CONTAINER_URL",
-      "value": ""
-    },
-    {
-      "name": "RESOURCE_GROUP_NAME",
-      "value": ""
-    },
-    {
       "name": "BACKUP_NAME",
       "value": ""
     },
     {
+      "name": "CONTAINER_URL",
+      "value": ""
+    },
+    {
       "name": "WEB_APP_NAME",
+      "value": ""
+    },
+    {
+      "name": "RESOURCE_GROUP_NAME",
       "value": ""
     },
     {
@@ -42,7 +42,7 @@
       "name": "cell_2",
       "type": "MARKDOWN",
       "enabled": true,
-      "content": "## 1. Check the status of the web app:"
+      "content": "## Check the status of the web app:"
     },
     {
       "name": "cell_3",
@@ -54,7 +54,7 @@
       "name": "cell_4",
       "type": "MARKDOWN",
       "enabled": true,
-      "content": "## 2. Check the logs for the web app:"
+      "content": "## Check the logs for the web app:"
     },
     {
       "name": "cell_5",
@@ -66,7 +66,7 @@
       "name": "cell_6",
       "type": "MARKDOWN",
       "enabled": true,
-      "content": "## 4. Check the connection strings for the web app:"
+      "content": "## Check the connection strings for the web app:"
     },
     {
       "name": "cell_7",
@@ -90,7 +90,7 @@
       "name": "cell_10",
       "type": "MARKDOWN",
       "enabled": true,
-      "content": "## 7. Check the backup schedule for the webapp"
+      "content": "## Check the backup schedule for the webapp"
     },
     {
       "name": "cell_11",
@@ -102,7 +102,7 @@
       "name": "cell_12",
       "type": "MARKDOWN",
       "enabled": true,
-      "content": "## 5. Check the backup status of the web app:"
+      "content": "## Check the backup status of the web app:"
     },
     {
       "name": "cell_13",
@@ -120,7 +120,7 @@
       "name": "cell_15",
       "type": "OP_LANG",
       "enabled": true,
-      "content": "host | host_name=$HOST_NAME | invoke_backup_status_and_size_check($RESOURCE_GROUP_NAME, $BACKUP_NAME, $WEB_APP_NAME)"
+      "content": "host | host_name=$HOST_NAME | invoke_check_backup_status_size($BACKUP_NAME, $WEB_APP_NAME, $RESOURCE_GROUP_NAME)"
     },
     {
       "name": "cell_16",
@@ -132,7 +132,7 @@
       "name": "cell_17",
       "type": "OP_LANG",
       "enabled": true,
-      "content": "host | host_name=$HOST_NAME | invoke_restore_webapp_backup($CONTAINER_URL, $RESOURCE_GROUP_NAME, $WEB_APP_NAME)"
+      "content": "host | host_name=$HOST_NAME | invoke_restore_backup($CONTAINER_URL, $WEB_APP_NAME, $RESOURCE_GROUP_NAME)"
     }
   ]
 }
